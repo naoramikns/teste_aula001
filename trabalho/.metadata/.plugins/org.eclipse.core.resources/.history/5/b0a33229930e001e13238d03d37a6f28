@@ -1,0 +1,67 @@
+package sistemalogin;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class CriarEventoFrame extends JFrame {
+
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JTextField nomeField;
+    private JTextField dataField;
+    private JTextField horasACCField;
+    private JButton criarButton;
+
+    public CriarEventoFrame() {
+        setTitle("Criar Evento");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setSize(300, 200);
+        setLocationRelativeTo(null); // Centraliza a janela na tela
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(4, 2));
+
+        JLabel nomeLabel = new JLabel("Nome:");
+        nomeField = new JTextField();
+        JLabel dataLabel = new JLabel("Data:");
+        dataField = new JTextField();
+        JLabel horasACCLabel = new JLabel("Horas ACC:");
+        horasACCField = new JTextField();
+        criarButton = new JButton("Criar");
+
+        panel.add(nomeLabel);
+        panel.add(nomeField);
+        panel.add(dataLabel);
+        panel.add(dataField);
+        panel.add(horasACCLabel);
+        panel.add(horasACCField);
+        panel.add(new JLabel()); // Espaço vazio para layout
+        panel.add(criarButton);
+
+        add(panel);
+
+        criarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Obter os valores dos campos de texto
+                String nome = nomeField.getText();
+                String data = dataField.getText();
+                int horasACC = Integer.parseInt(horasACCField.getText());
+
+                // Criar o evento
+                Evento evento = new Evento(nome, data, horasACC);
+
+                // Exibir mensagem de sucesso
+                JOptionPane.showMessageDialog(CriarEventoFrame.this, "Evento criado:\n" + evento.getNome()
+                        + "\nData: " + evento.getData() + "\nHoras ACC: " + evento.getHorasACC(),
+                        "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+
+                // Fechar a janela de criação de evento
+                dispose();
+            }
+        });
+    }
+}

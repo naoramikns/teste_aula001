@@ -1,0 +1,47 @@
+package sistemalogin;
+
+public class Evento {
+    private String nome;
+    private int horasACC;
+    private String data;
+
+    public Evento(String nome, int horasACC, String data) {
+        this.nome = nome;
+        this.horasACC = horasACC;
+        this.data = data;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getHorasACC() {
+        return horasACC;
+    }
+
+    public void setHorasACC(int horasACC) {
+        this.horasACC = horasACC;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    @Override
+    public String toString() {
+        return "Evento{" +
+                "nome='" + nome + '\'' +
+                ", horasACC=" + horasACC +
+                ", data='" + data + '\'' +
+                '}';
+    }
+}
+
